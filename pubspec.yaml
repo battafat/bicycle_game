@@ -30,9 +30,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  google_maps_flutter: ^2.3.0  # Google Maps plugin
+  google_maps_flutter: ^2.9.0  # Google Maps plugin
   ar_flutter_plugin: ^0.7.3  # AR plugin for ARCore/ARKit
-  location: ^6.0.2   
+  location: ^7.0.0   
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -49,9 +49,9 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^4.0.0
+  flutter_lints: ^5.0.0
   envied_generator: ^0.5.4+1
-  build_runner: ^2.4.9
+  build_runner: ^2.4.13
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
