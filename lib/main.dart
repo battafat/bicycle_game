@@ -15,6 +15,7 @@ class _MyAppState extends State<MyApp> {
 
   final LatLng _stinsonPark = const LatLng(41.23801512899556, -96.01647066329785);
 
+
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
   }
@@ -33,7 +34,14 @@ class _MyAppState extends State<MyApp> {
             target: _stinsonPark,
             zoom: 11.0,
           ),
+        markers: {
+            const Marker(
+              markerId: MarkerId('stinsonPark'),
+              position: LatLng(41.23801512899556, -96.01647066329785),
+            )
+          },  
         ),
+        
       ),
     );
   }
