@@ -14,6 +14,9 @@ migrate_working_dir/
 .env
 # exclude the API key from version control
 lib/env/env.g.dart
+web/index.html
+ios/Runner/AppDelegate.swift
+
 
 # IntelliJ related
 *.iml
