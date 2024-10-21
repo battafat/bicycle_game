@@ -32,7 +32,7 @@ class _MyAppState extends State<MyApp> {
           onMapCreated: _onMapCreated,
           initialCameraPosition: CameraPosition(
             target: _stinsonPark,
-            zoom: 0.0,
+            zoom: 11.0,
           ),
         markers: {
             const Marker(
