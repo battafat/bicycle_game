@@ -14,6 +14,7 @@ class _MyAppState extends State<MyApp> {
   late GoogleMapController mapController;
 
   final LatLng _stinsonPark = const LatLng(41.23801512899556, -96.01647066329785);
+  final LatLng _paris = const LatLng(48.8575, 2.3514);
 
 
   void _onMapCreated(GoogleMapController controller) {
@@ -31,7 +32,7 @@ class _MyAppState extends State<MyApp> {
         body: GoogleMap(
           onMapCreated: _onMapCreated,
           initialCameraPosition: CameraPosition(
-            target: _stinsonPark,
+            target: _paris,
             zoom: 11.0,
           ),
         markers: {
@@ -41,6 +42,14 @@ class _MyAppState extends State<MyApp> {
               infoWindow: InfoWindow(
                 title: "stinsonPark",
                 snippet: "Starting point for the game",
+              ), // InfoWindow
+            ),
+            const Marker(
+              markerId: MarkerId('Paris'),
+              position: LatLng(48.8575, 2.3514),
+              infoWindow: InfoWindow(
+                title: "Paris",
+                snippet: "France!",
               ), // InfoWindow
             )
           },  
