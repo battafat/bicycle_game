@@ -109,21 +109,14 @@ void logPosition() async{
           ),
           markers: {
             const Marker(
-              markerId: MarkerId('stinsonPark'),
-              position: LatLng(41.23801512899556, -96.01647066329785),
+              markerId: MarkerId('Recurse Center'),
+              position: LatLng(40.69155664982435, -73.98506900344982),
               infoWindow: InfoWindow(
-                title: "stinsonPark",
+                title: "Recurse Center",
                 snippet: "Starting point for the game",
               ), // InfoWindow
             ),
-            const Marker(
-              markerId: MarkerId('Paris'),
-              position: LatLng(48.8575, 2.3514),
-              infoWindow: InfoWindow(
-                title: "Paris",
-                snippet: "France!",
-              ), // InfoWindow
-            )
+            
           },
         ),
       ),
