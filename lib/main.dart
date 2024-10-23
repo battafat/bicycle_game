@@ -68,7 +68,7 @@ class _MyAppState extends State<MyApp> {
 
 final LocationSettings locationSettings = LocationSettings(
   accuracy: LocationAccuracy.high,
-  distanceFilter: 100,
+  distanceFilter: 10,
 );
 
 void logPosition() async{
@@ -84,9 +84,9 @@ void logPosition() async{
 }
   
 
-  final LatLng _stinsonPark =
-      const LatLng(41.23801512899556, -96.01647066329785);
+  final LatLng _stinsonPark =const LatLng(41.23801512899556, -96.01647066329785);
   final LatLng _paris = const LatLng(48.8575, 2.3514);
+  final LatLng _recurseCenter = const LatLng(40.69155664982435, -73.98506900344982);
 
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
