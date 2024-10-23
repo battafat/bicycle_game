@@ -7,7 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:bicycle_game/main.dart';
 
 void main() {
@@ -16,15 +16,22 @@ void main() {
     await tester.pumpWidget(const MyApp());
 
     // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    expect(find.byWidget(GoogleMap(
+            initialCameraPosition: CameraPosition(
+          target: LatLng(41.23801512899556, -96.01647066329785)
+        ))), findsOneWidget);
+    // test if the button exists on the map
+    // test if the latLng was input. 
+    // if someone inputs bad data, do we want to check on how it gracefully handles that
+    // test if the application displays the response
+    // what happens if the API is down?
+    // how does the app handle that?
 
     // Tap the '+' icon and trigger a frame.
     await tester.tap(find.byIcon(Icons.add));
     await tester.pump();
 
     // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    
   });
 }
