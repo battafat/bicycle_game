@@ -14,8 +14,7 @@ class Geolocation{
     return resMeters;
   }
   bool isAtMarker(double distance){
-    
-    return true;
+    return distance <= 100;
   }
 }
 

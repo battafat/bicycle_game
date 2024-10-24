@@ -45,12 +45,17 @@ void main() {
         isNot(incorrectExpectedDistance)); // margin of error: 100 meters
     printOnFailure('Test failed: Calculated distance was $result meters');
   });
-  test('isAtMarker', () {
+  test('isAtMarker == 100', () {
     // what do I want this next test to do?
     // isAtMarker test. A function that checks if the double from calculateDistance
     // is <= 100 meters.
     final geolocation = Geolocation();
     final result = geolocation.isAtMarker(100.0);
     expect(result, true);
+  });
+  test('isAtMarker > 100', (){
+    final geolocation = Geolocation();
+    final result = geolocation.isAtMarker(101.0);
+    expect(result, false);
   });
 }
