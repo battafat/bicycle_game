@@ -89,8 +89,8 @@ void main() {
     final user = User(id: 'userLocation', latitude: rcMarkerLat, longitude: rcMarkerLng);
     user.updateLocation(rcNeighborLat, rcNeighborLng);
     
-    expect(user.latitude, equals(40.69147897845872));
-    expect(user.longitude, equals(-73.98504817799676));
+    expect(user.latitude, equals(rcNeighborLat));
+    expect(user.longitude, equals(rcNeighborLng));
     printOnFailure('Test Failed: original LatLng was $rcMarkerLat, $rcMarkerLng. Updated LatLng should be $rcNeighborLat, $rcNeighborLng');
   });
 }
