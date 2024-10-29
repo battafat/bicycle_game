@@ -44,8 +44,8 @@ class Geolocation {
 
 class MarkerManager {
 
-  final Map<String, Marker> markersByName = {
-    'rcMarker': Marker(
+  final Map<MarkerKey, Marker> markersByName = {
+    MarkerKey.rcMarker: Marker(
       markerId: MarkerId('Recurse Center'),
       position: LatLng(40.69155664982435, -73.98506900344982),
       infoWindow: InfoWindow(
@@ -53,7 +53,7 @@ class MarkerManager {
         snippet: "Starting point for the game",
       ), // InfoWindow
     ),
-    'rcNeighbor': Marker(
+    MarkerKey.rcNeighborMarker: Marker(
       markerId: MarkerId('rcNeighbor'),
       position: LatLng(40.69147897845872, -73.98504817799676),
       infoWindow: InfoWindow(
@@ -73,4 +73,9 @@ class MarkerManager {
       return LatLng(40.69155664982435, -73.98506900344982); // Define a default position as a fallback
     }
 }
+}
+
+enum MarkerKey {
+  rcMarker,
+  rcNeighborMarker, // Add more as needed
 }

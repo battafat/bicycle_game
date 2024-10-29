@@ -93,4 +93,10 @@ void main() {
     expect(user.longitude, equals(rcNeighborLng));
     printOnFailure('Test Failed: original LatLng was $rcMarkerLat, $rcMarkerLng. Updated LatLng should be $rcNeighborLat, $rcNeighborLng');
   });
+  test('All MarkerKey enum values have entries in markersByName', () {
+    final markerManager = MarkerManager();
+    for (var key in MarkerKey.values) {
+            expect(markerManager.markersByName.containsKey(key), isTrue,
+                reason: 'Missing entry for $key in markersByName');}
+  });
 }
