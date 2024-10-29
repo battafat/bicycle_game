@@ -79,15 +79,18 @@ void main() {
     expect(result, 8.81318372261295);
   });
 
-  test('updateLocation', () {
+  test('updateLocation from RC to rcNeighbor', () {
     final markerManager = MarkerManager();
 
     final rcMarkerLat = markerManager.getMarkerPosition('rcMarker').latitude;
     final rcMarkerLng = markerManager.getMarkerPosition('rcMarker').longitude;
+    final rcNeighborLat = markerManager.getMarkerPosition('rcNeighbor').latitude;
+    final rcNeighborLng = markerManager.getMarkerPosition('rcNeighbor').longitude;
     final user = User(id: 'userLocation', latitude: rcMarkerLat, longitude: rcMarkerLng);
-    final result = (user.latitude, user.longitude);
-    user.updateLocation(40.69147897845872, -73.98504817799676);
+    user.updateLocation(rcNeighborLat, rcNeighborLng);
     
-    expect(result, user);
+    expect(user.latitude, equals(40.69147897845872));
+    expect(user.longitude, equals(-73.98504817799676));
+    printOnFailure('Test Failed: original LatLng was $rcMarkerLat, $rcMarkerLng. Updated LatLng should be $rcNeighborLat, $rcNeighborLng');
   });
 }
