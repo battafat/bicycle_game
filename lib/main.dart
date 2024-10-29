@@ -71,13 +71,13 @@ final LocationSettings locationSettings = LocationSettings(
   distanceFilter: 10,
 );
 
-void logPosition() async{
+void logUserLocation() async{
   try {
-      Position position = await Geolocator.getCurrentPosition(
+      Position userLocation = await Geolocator.getCurrentPosition(
           locationSettings: locationSettings);
 
-      _logger.info('Latitude: ${position.latitude}');
-      _logger.info('Longitude: ${position.longitude}');
+      _logger.info('Latitude: ${userLocation.latitude}');
+      _logger.info('Longitude: ${userLocation.longitude}');
   } catch (e) {
       _logger.severe('Failed to get current position: $e');
     }
@@ -90,7 +90,7 @@ void logPosition() async{
 
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
-    logPosition();
+    logUserLocation();
   }
 
   @override
@@ -116,8 +116,9 @@ void logPosition() async{
                 snippet: "Starting point for the game",
               ), // InfoWindow
             ),
-            
           },
+          myLocationEnabled: true, // Enables the blue dot
+          myLocationButtonEnabled: true, // Optional: Adds a button to go to user location
         ),
       ),
     );

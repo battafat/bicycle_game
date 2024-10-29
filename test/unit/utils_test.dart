@@ -1,11 +1,10 @@
 import 'package:bicycle_game/geolocation.dart';
+import 'package:bicycle_game/user.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 void main() {
   test('calculateDistance should return the correct distance', () {
-    LatLng rc = LatLng(40.691407797702354, -73.98507768229393);
-    LatLng rcNeighbor = LatLng(40.69147897845872, -73.98504817799676);
     double rcLat = 40.691407797702354;
     double rcLng = -73.98507768229393;
     double rcNeighborLat = 40.69147897845872;
@@ -46,16 +45,49 @@ void main() {
     printOnFailure('Test failed: Calculated distance was $result meters');
   });
   test('isAtMarker == 100', () {
-    // what do I want this next test to do?
-    // isAtMarker test. A function that checks if the double from calculateDistance
+    // A function that checks if the double from calculateDistance
     // is <= 100 meters.
     final geolocation = Geolocation();
     final result = geolocation.isAtMarker(100.0);
     expect(result, true);
   });
-  test('isAtMarker > 100', (){
+  test('isAtMarker > 100', () {
     final geolocation = Geolocation();
     final result = geolocation.isAtMarker(101.0);
     expect(result, false);
+  });
+
+  test('calculateDistanceFromMarker', () {
+    // what parameters do I need for this test?
+    // the location of the marker: marker.position
+    // the location of the user: userLocation
+    //
+    final markerManager = MarkerManager();
+    final geolocation = Geolocation();
+   
+    final rcMarkerLat = markerManager.getMarkerPosition('rcMarker').latitude;
+    final rcMarkerLng = markerManager.getMarkerPosition('rcMarker').longitude;
+    final rcNeighborLat = markerManager.getMarkerPosition('rcNeighbor').latitude;
+    final rcNeighborLng = markerManager.getMarkerPosition('rcNeighbor').longitude;
+
+    final result = geolocation.calculateDistance(
+      rcMarkerLat,
+      rcMarkerLng,
+      rcNeighborLat,
+      rcNeighborLng
+    );
+    expect(result, 8.81318372261295);
+  });
+
+  test('updateLocation', () {
+    final markerManager = MarkerManager();
+
+    final rcMarkerLat = markerManager.getMarkerPosition('rcMarker').latitude;
+    final rcMarkerLng = markerManager.getMarkerPosition('rcMarker').longitude;
+    final user = User(id: 'userLocation', latitude: rcMarkerLat, longitude: rcMarkerLng);
+    final result = (user.latitude, user.longitude);
+    user.updateLocation(40.69147897845872, -73.98504817799676);
+    
+    expect(result, user);
   });
 }
